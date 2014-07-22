@@ -16,7 +16,9 @@
             </div>
             
         	<!-- BLE stuff here -->
-            <script>
+            <script type="text/javascript">
+        		document.write("Test document write<br/>")
+        		console.log("Test console log entry")
         		bluetoothle.initialize(initializeSuccess, initializeError);
 
 function initializeSuccess(obj)
@@ -26,7 +28,7 @@ function initializeSuccess(obj)
     var address = window.localStorage.getItem(addressKey);
     if (address == null)
     {
-        document.write("Bluetooth initialized successfully, starting scan for heart rate devices.");
+        document.write("Bluetooth initialized successfully, starting scan for heart rate devices.<br/>");
         console.log("Bluetooth initialized successfully, starting scan for heart rate devices.");
         var paramsObj = {"serviceAssignedNumbers":[heartRateServiceAssignedNumber]};
         bluetoothle.startScan(startScanSuccess, startScanError, paramsObj);
@@ -38,13 +40,14 @@ function initializeSuccess(obj)
   }
   else
   {
-    document.write("Unexpected initialize status: " + obj.status);
+    document.write("Unexpected initialize status: " + obj.status + "<br/>");
+    consol.log("Unexpected initialize status: " + obj.status);
   }
 }
 
 function initializeError(obj)
 {
-  document.write("Initialize error: " + obj.error + " - " + obj.message);
+  document.write("Initialize error: " + obj.error + " - " + obj.message + "<br/>");
   console.log("Initialize error: " + obj.error + " - " + obj.message);
 }
 
