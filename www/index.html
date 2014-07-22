@@ -10,11 +10,44 @@
         <title>BLE Demo</title>
     </head>
     <body>
-        <!--<div class="app">-->
             <h1>CW PhoneGap</h1>
             <div id="deviceready" class="blink">
                 <p>Scanning for BLE devices</p>
             </div>
-        <!--</div>-->
+            
+        	<!-- BLE stuff here -->
+            <script>
+        		bluetoothle.initialize(initializeSuccess, initializeError);
+
+function initializeSuccess(obj)
+{
+  if (obj.status == "initialized")
+  {
+    var address = window.localStorage.getItem(addressKey);
+    if (address == null)
+    {
+        document.write("Bluetooth initialized successfully, starting scan for heart rate devices.");
+        console.log("Bluetooth initialized successfully, starting scan for heart rate devices.");
+        var paramsObj = {"serviceAssignedNumbers":[heartRateServiceAssignedNumber]};
+        bluetoothle.startScan(startScanSuccess, startScanError, paramsObj);
+    }
+    else
+    {
+        connectDevice(address);
+    }
+  }
+  else
+  {
+    document.write("Unexpected initialize status: " + obj.status);
+  }
+}
+
+function initializeError(obj)
+{
+  document.write("Initialize error: " + obj.error + " - " + obj.message);
+  console.log("Initialize error: " + obj.error + " - " + obj.message);
+}
+
+            </script>
     </body>
 </html>
