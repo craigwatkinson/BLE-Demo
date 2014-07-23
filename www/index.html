@@ -19,16 +19,26 @@
         <script type="text/javascript">
             var addressKey = null;
 
-            document.write("Test document write<br/>");
-            console.log("Test console log entry");
+            document.addEventListener("deviceready", function(e){
+                if ( device ) {
+                    alert("Running on PhoneGap!");
+                    document.write("Test document write<br/>");
+                    console.log("Test console log entry");
             object.call;             // Should cause a failure/error
             
             bluetoothle.initialize(initializeSuccess, initializeError);
+        } else {
+            alert("Running NOT on PhoneGap!");
+        }
+        
+    }, false);
+            
 
             function initializeSuccess(obj) {
+                document.write("d1");
                 if (obj.status == "initialized") {
                     var address = window.localStorage.getItem(addressKey);
-                    if (address == null) {
+                    if (address === null) {
                         document.write("Bluetooth initialized successfully, starting scan for devices.<br/>");
                         console.log("Bluetooth initialized successfully, starting scan for devices.");
                         //var paramsObj = {"serviceAssignedNumbers":[heartRateServiceAssignedNumber]};
@@ -39,11 +49,12 @@
                     }
                 } else {
                     document.write("Unexpected initialize status: " + obj.status + "<br/>");
-                    consol.log("Unexpected initialize status: " + obj.status);
+                    console.log("Unexpected initialize status: " + obj.status);
                 }
             }
 
             function initializeError(obj) {
+                                document.write("d2");
               document.write("Initialize error: " + obj.error + " - " + obj.message + "<br/>");
               console.log("Initialize error: " + obj.error + " - " + obj.message);
             }
