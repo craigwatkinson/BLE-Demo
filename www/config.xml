@@ -70,7 +70,7 @@
     <!-- Local Weinre Debug server -->
     <feature name="debug-server" required="true">
         <param name="domain" value="http://192.168.2.165:8080"/>
-        <param name="key" value="[ a unique id for your app ]"/>
+        <param name="key" value="bledemo"/>
     </feature>
     
     <!-- Define app icon for each platform. -->
