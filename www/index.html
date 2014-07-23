@@ -10,47 +10,43 @@
         <title>BLE Demo</title>
     </head>
     <body>
-            <h1>CW PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p>Scanning for BLE devices</p>
-            </div>
+        <h1>BLE Demo App</h1>
+        <div id="deviceready" class="blink">
+            <p>Scanning for BLE devices</p>
+        </div>
+
+        <!-- BLE stuff here -->
+        <script type="text/javascript">
+            var addressKey = null;
+
+            document.write("Test document write<br/>");
+            console.log("Test console log entry");
+            object.call;             // Should cause a failure/error
             
-        	<!-- BLE stuff here -->
-            <script type="text/javascript">
-        		document.write("Test document write<br/>")
-        		console.log("Test console log entry")
-        		bluetoothle.initialize(initializeSuccess, initializeError);
+            bluetoothle.initialize(initializeSuccess, initializeError);
 
-function initializeSuccess(obj)
-{
-  if (obj.status == "initialized")
-  {
-    var address = window.localStorage.getItem(addressKey);
-    if (address == null)
-    {
-        document.write("Bluetooth initialized successfully, starting scan for heart rate devices.<br/>");
-        console.log("Bluetooth initialized successfully, starting scan for heart rate devices.");
-        var paramsObj = {"serviceAssignedNumbers":[heartRateServiceAssignedNumber]};
-        bluetoothle.startScan(startScanSuccess, startScanError, paramsObj);
-    }
-    else
-    {
-        connectDevice(address);
-    }
-  }
-  else
-  {
-    document.write("Unexpected initialize status: " + obj.status + "<br/>");
-    consol.log("Unexpected initialize status: " + obj.status);
-  }
-}
+            function initializeSuccess(obj) {
+                if (obj.status == "initialized") {
+                    var address = window.localStorage.getItem(addressKey);
+                    if (address == null) {
+                        document.write("Bluetooth initialized successfully, starting scan for devices.<br/>");
+                        console.log("Bluetooth initialized successfully, starting scan for devices.");
+                        //var paramsObj = {"serviceAssignedNumbers":[heartRateServiceAssignedNumber]};
+                        //bluetoothle.startScan(startScanSuccess, startScanError, paramsObj);
+                    } else {
+                        document.write("Connecting to device<br/>");
+                        connectDevice(address);
+                    }
+                } else {
+                    document.write("Unexpected initialize status: " + obj.status + "<br/>");
+                    consol.log("Unexpected initialize status: " + obj.status);
+                }
+            }
 
-function initializeError(obj)
-{
-  document.write("Initialize error: " + obj.error + " - " + obj.message + "<br/>");
-  console.log("Initialize error: " + obj.error + " - " + obj.message);
-}
-
-            </script>
+            function initializeError(obj) {
+              document.write("Initialize error: " + obj.error + " - " + obj.message + "<br/>");
+              console.log("Initialize error: " + obj.error + " - " + obj.message);
+            }
+        </script>
     </body>
 </html>
