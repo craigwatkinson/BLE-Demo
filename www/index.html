@@ -12,52 +12,17 @@
     <body>
         <h1>BLE Demo App</h1>
         <div id="deviceready" class="blink">
-            <p>Scanning for BLE devices</p>
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>    
         </div>
 
         <!-- BLE stuff here -->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="bluetoothle.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/ble.js"></script>
         <script type="text/javascript">
-            var addressKey = null;
-
-            document.addEventListener("deviceready", function(e){
-                if ( device ) {
-                    alert("Running on PhoneGap!");
-                    document.write("Test document write<br/>");
-                    console.log("Test console log entry");
-            object.call;             // Should cause a failure/error
-            
-            bluetoothle.initialize(initializeSuccess, initializeError);
-        } else {
-            alert("Running NOT on PhoneGap!");
-        }
-        
-    }, false);
-            
-
-            function initializeSuccess(obj) {
-                document.write("d1");
-                if (obj.status == "initialized") {
-                    var address = window.localStorage.getItem(addressKey);
-                    if (address === null) {
-                        document.write("Bluetooth initialized successfully, starting scan for devices.<br/>");
-                        console.log("Bluetooth initialized successfully, starting scan for devices.");
-                        //var paramsObj = {"serviceAssignedNumbers":[heartRateServiceAssignedNumber]};
-                        //bluetoothle.startScan(startScanSuccess, startScanError, paramsObj);
-                    } else {
-                        document.write("Connecting to device<br/>");
-                        connectDevice(address);
-                    }
-                } else {
-                    document.write("Unexpected initialize status: " + obj.status + "<br/>");
-                    console.log("Unexpected initialize status: " + obj.status);
-                }
-            }
-
-            function initializeError(obj) {
-                                document.write("d2");
-              document.write("Initialize error: " + obj.error + " - " + obj.message + "<br/>");
-              console.log("Initialize error: " + obj.error + " - " + obj.message);
-            }
+            app.initialize();         
         </script>
     </body>
 </html>
