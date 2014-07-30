@@ -36,7 +36,7 @@ function doIntro() {
     myInt=3;
     myStr="Hello";
     document.write("Introspection<br/>");
-    document.write("myInt: " + typeOf(myInt));
-    document.write("myStr: " + typeOf(myStr));
+    document.write("myInt: " + typeof(myInt));
+    document.write("myStr: " + typeof(myStr));
 }
           
