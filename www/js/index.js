@@ -30,6 +30,8 @@ var app = {
         
         document.write("Test document write<br/>");
         console.log('Test console log entry');
+        document.write("Pre init<br/>");
         bluetoothle.initialize(initializeSuccess, initializeError);
+        document.write("Post init<br/>");
     }
 };
