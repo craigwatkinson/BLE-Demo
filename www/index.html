@@ -15,20 +15,20 @@
         <script type="text/javascript" src="js/ble.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/ble_functions.js"></script>
-            <h1>BLE Demo App</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>    
-            </div>
+        
+        <h1>BLE Demo App</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>    
+        </div>
 
         <script type="text/javascript">
             document.write("Doing introspection<br/>");
             doIntro();
-        </script>
-        <!-- BLE stuff here -->
+            document.write("<br\>");
 
-        <script type="text/javascript">
             app.initialize();    
+
             document.write("Doing introspection again<br/>");
             doIntro();     
         </script>
